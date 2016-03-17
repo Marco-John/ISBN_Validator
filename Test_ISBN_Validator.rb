@@ -17,6 +17,17 @@ class TestIsbnChecker < Minitest::Test
 		assert_equal(false, valid_isbn?("12345678912345"))
 	end
 	
+	def test_valid_isbn10_with_spaces_returns_true
+		assert_equal(true, valid_isbn?("047 1958 697"))
+	end
+	
+	def test_valid_isbn10_with_hyphens_returns_true
+		assert_equal(true, valid_isbn?("0-321-14653-0"))
+	end
+
+	def test_valid_isbn10_with_spaces_and_hyphens_returns_true
+		assert_equal(true, valid_isbn?(" 047-1958 697-"))
+	end
 	
 end
 
