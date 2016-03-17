@@ -39,14 +39,40 @@ class TestIsbnChecker < Minitest::Test
 		assert_equal(true, valid_isbn?("978 0 471 48648 0"))
 	end
 
-end
-
 #ISBN-10
 
 #4.  Multiply each digit by its position
 #5.  Sum of all products of each position
 #6.  Take modulo 11 of the result
 #7.  If the modulo 11 result is 10, then "x" will be the last character in ISBN-10
+
+	def test_convert_string_to_array_of_characters
+		assert_equal(["1","2","3","4","5","6","7"],convert_string_to_array("1234567"))
+	end
+
+	def test_isbn10_math?
+		assert_equal([1,2,3,1], multiply_progression([1,1,1,1]))
+	end
+
+	def test_isbn10_addition
+		assert_equal(49, sum_of_items([0,4,7,1,9,5,8,6,9,7]))
+	end
+	
+	def test_isbn10_addition_value_mod11
+		assert_equal("7", isbn10_mod11(["0","4","7","1","9","5","8","6","9","7"]))
+	end
+	
+	def test_isbn10_mod_equals_10
+		assert_equal("x", isbn10_mod11(["8","7","7","1","9","5","8","6","9","10"]))
+	end
+	
+	def test_valid_isbn10
+		assert_equal(true, valid_isbn10?("0471958697"))
+	end	
+	
+	
+end
+
 
 #ISBN-13
 

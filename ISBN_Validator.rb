@@ -17,3 +17,54 @@ def correct_length?(input_string)
 		false
 	end	
 end
+
+def convert_string_to_array(input_string)
+	input_string.split("")
+end
+
+def multiply_progression(input_array)
+	array =[]
+	items_to_be_summed = input_array.length - 1
+	input_array.each_with_index do |value,index|
+		value = value.to_i
+		if index < items_to_be_summed
+		array << value * (index + 1)
+		else
+		array << value
+		end
+		end
+	array
+end
+
+def sum_of_items(array_of_numbers)
+	sum = 0
+	items_to_be_summed = array_of_numbers.length - 1
+	array_of_numbers.each_with_index do |value, index|
+		break if index == items_to_be_summed
+		sum = sum + value
+	end
+	sum
+end
+
+def isbn10_mod11(input_array)
+	add_array = multiply_progression(input_array)
+	y = sum_of_items(add_array)
+	check_sum = y%11
+	if check_sum == 10
+		"x"
+	else
+		check_sum.to_s
+	end
+end
+
+def valid_isbn10?(input_string)
+	array = convert_string_to_array(input_string)
+	checksum = isbn10_mod11(array)
+	checksum == input_string[-1]
+end
+
+
+
+
+
+
