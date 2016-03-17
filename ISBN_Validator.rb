@@ -63,8 +63,34 @@ def valid_isbn10?(input_string)
 	checksum == input_string[-1]
 end
 
+def valid_isbn13?(input_string)
+	last_num = input_string[-1]
+	isbn13_checksum(input_string) == last_num.to_i
+end
 
+def multiply_array(input_array)
+	array = []
+	input_array.each_with_index do |value,index|
+		value = value.to_i
+		if index % 2 == 0
+			array << value * 1 
+		else 
+			array << value * 3
+		end
+	end
+	array
+end 
 
+def subtraction(sum_of_items)
+	isbn13_mod10 = 10 - sum_of_items%10
+	isbn13_mod10%10
+end
 
+def isbn13_checksum(input_string)
+	array = convert_string_to_array(input_string)
+	x_array = multiply_array(array)
+	summed_array = sum_of_items(x_array)
+	subtraction(summed_array)
+end
 
 

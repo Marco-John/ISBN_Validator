@@ -70,6 +70,23 @@ class TestIsbnChecker < Minitest::Test
 		assert_equal(true, valid_isbn10?("0471958697"))
 	end	
 	
+	def test_multiply_array_by_1_and_3
+		assert_equal([1,3,1,3,1,3], multiply_array(["1","1","1","1","1","1"]))
+		assert_equal([1,6,3,9,2,3], multiply_array(["1","2","3","3","2","1"]))
+	end
+
+	
+	def test_isbn_13_checksum
+		assert_equal(0, isbn13_checksum("9780131495050"))
+		assert_equal(9, isbn13_checksum("9780470059029"))
+		assert_equal(0, isbn13_checksum("9780471486480"))
+	end
+	
+	def test_isbn_13_last_digit_equal_to_result
+		assert_equal(true, valid_isbn13?("9780131495050"))
+		assert_equal(false, valid_isbn13?("9780121495050"))
+	end
+	
 	
 end
 
