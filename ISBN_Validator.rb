@@ -10,9 +10,9 @@ end
 
 def correct_length?(input_string)
 	if input_string.length == 10 
-		true
+		valid_isbn10?(input_string)
 	elsif input_string.length == 13
-		true
+		valid_isbn13?(input_string)
 	else
 		false
 	end	

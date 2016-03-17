@@ -68,8 +68,16 @@ class TestIsbnChecker < Minitest::Test
 	
 	def test_valid_isbn10
 		assert_equal(true, valid_isbn10?("0471958697"))
-	end	
+	end
 	
+#ISBN-13
+
+#8.  Multiply each digit alternately by 1 then 3
+#9.  Sum of all products of each position
+#10. Take modulo 10 of the result
+#11. Subtract the modulo 10 result from 10
+#12. Take modulo 10 of the Subtraction result to produce a single digit
+
 	def test_multiply_array_by_1_and_3
 		assert_equal([1,3,1,3,1,3], multiply_array(["1","1","1","1","1","1"]))
 		assert_equal([1,6,3,9,2,3], multiply_array(["1","2","3","3","2","1"]))
@@ -94,10 +102,10 @@ class TestIsbnChecker < Minitest::Test
 		assert_equal(true, valid_isbn?("0471958697"))
 		assert_equal(true, valid_isbn?("0-321-14653-0"))
 		assert_equal(true, valid_isbn?("877195869x"))
-		#assert_equal(false, valid_isbn?("4780470059029"))
-		#assert_equal(false, valid_isbn?("0-321@14653-0"))
-		##assert_equal(false, valid_isbn?("877195x869"))
-		#assert_equal(false, valid_isbn?(""))
+		assert_equal(false, valid_isbn?("4780470059029"))
+		assert_equal(false, valid_isbn?("0-321@14653-0"))
+		#assert_equal(false, valid_isbn?("877195x869"))
+		assert_equal(false, valid_isbn?(""))
 	end
 	
 	#def test_for_non_digits
@@ -107,13 +115,7 @@ class TestIsbnChecker < Minitest::Test
 end
 
 
-#ISBN-13
 
-#8.  Multiply each digit alternately by 1 then 3
-#9.  Sum of all products of each position
-#10. Take modulo 10 of the result
-#11. Subtract the modulo 10 result from 10
-#12. Take modulo 10 of the Subtraction result to produce a single digit
 
 
 
