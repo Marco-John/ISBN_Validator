@@ -1,9 +1,3 @@
-require 'minitest/autorun'
-require_relative 'ISBN_Validator.rb'
-
-class TestIsbnValidator < Minitest::Test 
-  
-  
 #ISBN Verification Program
   
 #Create a program that will determine if a string is a valid ISBN-10 or ISBN-13 number is valid.
@@ -11,16 +5,6 @@ class TestIsbnValidator < Minitest::Test
 #1.  ISBN-10 is made up of 9 digits and and a check digit (which may be "x")
 #2.  ISBN-13 is made up of 12 digits and a check digit
 #3.  Remove spaces and hyphens from string
-
-  def test_string_without_10_or_13_numbers
-		assert_equal(false, correct_length?(""))
-		assert_equal(false, correct_length?("123456789123"))
-		assert_equal(false, correct_length?("12345678912345"))
-  end
-
-
-
-
 
 
 
@@ -39,10 +23,6 @@ class TestIsbnValidator < Minitest::Test
 #11. Subtract the modulo 10 result from 10
 #12. Take modulo 10 of the Subtraction result to produce a single digit
 
-
-
-
-end
 
 
 
